@@ -1,7 +1,7 @@
 steps:
   # Clone Git local
-#  - name: gcr.io/cloud-builders/git
-#    args: ["fetch", "--unshallow"]
+  - name: gcr.io/cloud-builders/git
+    args: ["fetch", "--unshallow"]
 
   # Maven compile
   - name: 'gcr.io/cloud-builders/mvn'
@@ -14,12 +14,9 @@ steps:
             "-f", "src/main/docker/Dockerfile.jvm", 
             "--cache-from", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm",
             "-t", "enterprise-flows-repository/api-infrastructure-quarkus:jvm", 
+            "-t", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm",
             "."]
     dir: src/main/docker
-
-  # Tag image for Repository
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["tag", "enterprise-flows-repository/api-infrastructure-quarkus:native", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm"]
 
   # Push into Docker Repository
   - name: "gcr.io/cloud-builders/docker"
