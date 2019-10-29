@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: api-infrastructure-quarkus
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  labels:
+    app: api-infrastructure-quarkus
+spec:
+  rules:
+  - http: 
+      paths:
+      - path: /infrastructure/1/*
+        backend:
+          serviceName: api-infrastructure-quarkus
+          servicePort: 8081
