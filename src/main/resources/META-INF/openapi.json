@@ -1,0 +1,1320 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Enterprise Flows Repository - Infrastructure",
+        "version": "1.0.0",
+        "description": "API for enterprise architecture.\nInfrastructure description.",
+        "contact": {
+            "name": "Emmanuel LESNE",
+            "url": "https://github.com/MiddlewareSolutions/EnterpriseFlowRepository/",
+            "email": "emmanuel.lesne@middleware-solutions.fr"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://www.middleware-solutions.com/{stage}/api/ea/infrastructure/1",
+            "variables": {
+                "stage": {
+                    "default": "dev",
+                    "description": "Snapshot development"
+                }
+            }
+        }
+    ],
+    "paths": {
+        "/datacenter": {
+            "summary": "Manage `DataCenters`",
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DataCenter"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "list of servers"
+                    }
+                },
+                "operationId": "listDataCenters",
+                "summary": "Get all datacenters.",
+                "description": "list all datacenters"
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DataCenter"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Datacenter created."
+                    }
+                },
+                "operationId": "addDataCenter",
+                "summary": "Add a datacenter.",
+                "description": "add a datacenter"
+            }
+        },
+        "/datacenter/{id}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DataCenter"
+                                }
+                            }
+                        },
+                        "description": "description of datacenter."
+                    },
+                    "404": {
+                        "description": "data center not found."
+                    }
+                },
+                "operationId": "getOneDataCenter",
+                "summary": "Get one datacenter.",
+                "description": "Get Full description."
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DataCenter"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "data center modifié"
+                    }
+                },
+                "operationId": "modifyOneDataCenter",
+                "summary": "Modify a datacenter.",
+                "description": "Update DataCenter"
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "DataCenter deleted."
+                    }
+                },
+                "operationId": "deleteOneDataCenter",
+                "summary": "Delete a datacenter.",
+                "description": "Delete this zone"
+            },
+            "parameters": [
+                {
+                    "name": "version",
+                    "description": "version to retreive.",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "query"
+                }
+            ]
+        },
+        "/datacenter/{id}/zone/{id}": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Zone"
+                                }
+                            }
+                        },
+                        "description": "Network zone description"
+                    }
+                },
+                "operationId": "getOneZone",
+                "description": "Get description of a zone."
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Zone"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Zone updated."
+                    }
+                },
+                "operationId": "modifyOneZone",
+                "description": "Modify this zone."
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Network zone deleted."
+                    }
+                },
+                "operationId": "deleteOneZone",
+                "description": "Delete this zone"
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "description": "ID of element",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                },
+                {
+                    "name": "version",
+                    "description": "version to retrive.",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "query"
+                }
+            ]
+        },
+        "/datacenter/{id}/zone": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Zone"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "network zone created."
+                    }
+                },
+                "operationId": "listZones",
+                "description": "list all zones"
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Zone"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Network zone created."
+                    }
+                },
+                "operationId": "addZone",
+                "description": "add a zone"
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/datacenter/{id}/zone/{id}/network": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Network"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "List netwoks."
+                    }
+                },
+                "operationId": "listNetworks",
+                "description": "list all networks"
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Network"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Creation accepted."
+                    }
+                },
+                "operationId": "addNetwork",
+                "description": "add a network"
+            }
+        },
+        "/datacenter/{id}/zone/{id}/network/{id}": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Network"
+                                }
+                            }
+                        },
+                        "description": "Network found."
+                    }
+                },
+                "operationId": "getOneNetwork",
+                "description": "Get description of a network."
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Network"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Modification accepted."
+                    }
+                },
+                "operationId": "modifyOneNetwork",
+                "description": "Modify this network."
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Deletion acception."
+                    }
+                },
+                "operationId": "deleteOneNetwork",
+                "description": "Delete this network"
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "description": "ID of element",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                },
+                {
+                    "name": "version",
+                    "description": "version to retreive.",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "query"
+                }
+            ]
+        },
+        "/server": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Server"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "List of servers."
+                    }
+                },
+                "operationId": "listServers",
+                "description": "list all servers"
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Server"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Modification accepted."
+                    }
+                },
+                "operationId": "addServer",
+                "description": "add a server"
+            }
+        },
+        "/server/{id}": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Server"
+                                }
+                            }
+                        },
+                        "description": "Description of a server."
+                    }
+                },
+                "operationId": "getOneServer",
+                "description": "Get description of a server."
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Server"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Modification accepted."
+                    }
+                },
+                "operationId": "modifyOneServer",
+                "description": "Modify this server."
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Deletion accepted."
+                    }
+                },
+                "operationId": "deleteOneServer",
+                "description": "Delete this server"
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "description": "ID of element",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                },
+                {
+                    "name": "version",
+                    "description": "version to retreive",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "query"
+                }
+            ]
+        },
+        "/endpoint": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/EndPoint"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "List endpoints."
+                    }
+                },
+                "operationId": "listEndPoints",
+                "description": "list all endpoints"
+            },
+            "post": {
+                "requestBody": {
+                    "description": "New endpoint.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EndPoint"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Endpoint added."
+                    }
+                },
+                "operationId": "addEndPoint",
+                "description": "add a endpoint"
+            }
+        },
+        "/endpoint/{id}": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EndPoint"
+                                }
+                            }
+                        },
+                        "description": "Endpoint found."
+                    }
+                },
+                "operationId": "getOneEndPoint",
+                "description": "Get description of a endpoint."
+            },
+            "post": {
+                "requestBody": {
+                    "description": "Modifications for this endpoint.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EndPoint"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Modification accepted."
+                    }
+                },
+                "operationId": "modifyOneEndPoint",
+                "description": "Modify this endpoint."
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Deletion accepted."
+                    }
+                },
+                "operationId": "deleteOneEndPoint",
+                "description": "Delete this endpoint"
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "description": "ID of element",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                },
+                {
+                    "name": "version",
+                    "description": "version to retreive.",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "query"
+                }
+            ]
+        },
+        "/software": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Software"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "List Softwares."
+                    }
+                },
+                "operationId": "listSoftwares",
+                "description": "list all software"
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Software"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "New Software added."
+                    }
+                },
+                "operationId": "addSoftware",
+                "description": "add a software"
+            }
+        },
+        "/software/{id}": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Software"
+                                }
+                            }
+                        },
+                        "description": "Software description."
+                    }
+                },
+                "operationId": "getOneSoftware",
+                "description": "Get description of a software."
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Software"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Modification accepted."
+                    }
+                },
+                "operationId": "modifyOneSoftware",
+                "description": "Modify this software."
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "Software deleted."
+                    }
+                },
+                "operationId": "deleteOneSoftware",
+                "description": "Delete this software"
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "description": "ID of element",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                },
+                {
+                    "name": "version",
+                    "description": "Version to retreive.",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "query"
+                }
+            ]
+        },
+        "/errors": {
+            "summary": "Path used to manage the list of errors.",
+            "description": "The REST endpoint/path used to list and create zero or more `Error` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.",
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Error"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Successful response - returns an array of `Error` entities."
+                    }
+                },
+                "operationId": "geterrors",
+                "summary": "List All errors",
+                "description": "Gets a list of all `Error` entities."
+            },
+            "post": {
+                "requestBody": {
+                    "description": "A new `Error` to be created.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Error"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful response."
+                    }
+                },
+                "operationId": "createError",
+                "summary": "Create a Error",
+                "description": "Creates a new instance of a `Error`."
+            }
+        },
+        "/errors/{errorId}": {
+            "summary": "Path used to manage a single Error.",
+            "description": "The REST endpoint/path used to get, update, and delete single instances of an `Error`.  This path contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks, respectively.",
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": "Successful response - returns a single `Error`."
+                    }
+                },
+                "operationId": "getError",
+                "summary": "Get a Error",
+                "description": "Gets the details of a single instance of a `Error`."
+            },
+            "put": {
+                "requestBody": {
+                    "description": "Updated `Error` information.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Error"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful response."
+                    }
+                },
+                "operationId": "updateError",
+                "summary": "Update a Error",
+                "description": "Updates an existing `Error`."
+            },
+            "delete": {
+                "responses": {
+                    "204": {
+                        "description": "Successful response."
+                    }
+                },
+                "operationId": "deleteError",
+                "summary": "Delete a Error",
+                "description": "Deletes an existing `Error`."
+            },
+            "parameters": [
+                {
+                    "name": "errorId",
+                    "description": "A unique identifier for a `Error`.",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        }
+    },
+    "components": {
+        "schemas": {
+            "Element": {
+                "title": "Root Type for Element",
+                "description": "The root of the Element type's schema.",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of this element.",
+                        "type": "string"
+                    },
+                    "class": {
+                        "description": "Type of element",
+                        "type": "string"
+                    },
+                    "link": {
+                        "description": "Link to this element",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "id": "ABC",
+                    "class": "DataCenter",
+                    "link": "/datacenter/ABC"
+                }
+            },
+            "SLA": {
+                "properties": {
+                    "timeOfResponse": {
+
+                    },
+                    "availability": {
+
+                    },
+                    "timeToRecover": {
+
+                    },
+                    "criticity": {
+
+                    }
+                }
+            },
+            "Software": {
+                "description": "description of",
+                "required": [
+                    "technologicalFoundation"
+                ],
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Base"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ],
+                "properties": {
+                    "technologicalFoundation": {
+                        "description": "Is it a technological foundation ?",
+                        "type": "boolean"
+                    },
+                    "deliverables": {
+                        "description": "Deliverables run on",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Element"
+                        }
+                    },
+                    "dependencies": {
+                        "description": "Software dependencies.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Element"
+                        }
+                    }
+                }
+            },
+            "Server": {
+                "description": "description of",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Base"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ],
+                "properties": {
+                    "network": {
+                        "$ref": "#/components/schemas/Element",
+                        "description": "run in this network."
+                    },
+                    "CPU": {
+                        "format": "double",
+                        "description": "Ressources available.",
+                        "type": "number"
+                    },
+                    "RAM": {
+                        "format": "double",
+                        "description": "Ressources available.",
+                        "type": "number"
+                    },
+                    "softwares": {
+                        "description": "List of softwares installed.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Element"
+                        }
+                    },
+                    "endpoints": {
+                        "description": "endpoints of this server.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/EndPoint"
+                        }
+                    },
+                    "serversVirtualized": {
+                        "description": "Servers virtualized",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Element"
+                        }
+                    }
+                },
+                "example": {
+                    "network": {
+                        "id": "ABC",
+                        "class": "Network",
+                        "link": "/datacenter/123/zone/12/network/ABC"
+                    },
+                    "CPU": 83,
+                    "RAM": 88.34,
+                    "softwares": [
+                        {
+                            "id": "1234",
+                            "class": "Software",
+                            "link": "/software/1234"
+                        },
+                        {
+                            "id": "1235",
+                            "class": "Software",
+                            "link": "/software/1235"
+                        }
+                    ],
+                    "endpoints": [
+                        {
+                            "IP": "10.0.0.1",
+                            "URL": "http://monsite.com",
+                            "port": 8080
+                        },
+                        {
+                            "IP": "10.0.0.2",
+                            "URL": "http://monsite2.com",
+                            "port": 8081
+                        }
+                    ],
+                    "serversVirtualized": [
+                        {
+                            "id": "1732",
+                            "class": "Server",
+                            "link": "/server/1732"
+                        }
+                    ]
+                }
+            },
+            "Network": {
+                "description": "description of",
+                "required": [
+                    "servers"
+                ],
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Base"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ],
+                "properties": {
+                    "servers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Element"
+                        }
+                    }
+                }
+            },
+            "EndPoint": {
+                "description": "description of",
+                "required": [
+                    "IP"
+                ],
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Base"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ],
+                "properties": {
+                    "IP": {
+                        "description": "IP of this endpoint.",
+                        "type": "string"
+                    },
+                    "URL": {
+                        "description": "URL of this endpoint.",
+                        "type": "string"
+                    },
+                    "port": {
+                        "description": "port of this endpoint.",
+                        "type": "integer"
+                    }
+                }
+            },
+            "Deliverable": {
+                "description": "description of",
+                "required": [
+                    "runOn"
+                ],
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Base"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ],
+                "properties": {
+                    "technology": {
+
+                    },
+                    "runOn": {
+                        "$ref": "#/components/schemas/Software",
+                        "description": "Run on this technology stack."
+                    },
+                    "interfaces": {
+                        "description": "Interfaces exposed by this deliverable.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Element"
+                        }
+                    }
+                }
+            },
+            "DataCenter": {
+                "description": "description of",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Base"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ],
+                "properties": {
+                    "localisation": {
+                        "type": "string"
+                    },
+                    "capacity": {
+                        "type": "string"
+                    },
+                    "zones": {
+                        "description": "zones in datacenter",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Element"
+                        }
+                    }
+                }
+            },
+            "Base": {
+                "description": "description of",
+                "required": [
+                    "temporal",
+                    "deleted"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Base"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID of element.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "name of element.",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Textual description.",
+                        "type": "string"
+                    },
+                    "temporal": {
+                        "$ref": "#/components/schemas/Temporal",
+                        "description": "Temporal informations of element."
+                    },
+                    "deleted": {
+                        "description": "Is it deleted ?",
+                        "type": "boolean"
+                    },
+                    "tags": {
+                        "description": "Tags on this element.",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Tag"
+                        }
+                    }
+                },
+                "example": {
+                    "id": "123",
+                    "name": "Server 1",
+                    "description": "linux server N°1",
+                    "temporal": {
+                        "start": "some text",
+                        "end": "some text",
+                        "obsolete": "some text",
+                        "version": "some text",
+                        "previous": {
+                            "id": "some text",
+                            "class": "some text",
+                            "link": "some text"
+                        },
+                        "element": {
+                            "id": "some text",
+                            "class": "some text",
+                            "link": "some text"
+                        },
+                        "uuid": "some text"
+                    },
+                    "deleted": true,
+                    "tags": [
+                        {
+                            "name": "some text",
+                            "value": "some text"
+                        },
+                        {
+                            "name": "some text",
+                            "value": "some text"
+                        }
+                    ]
+                }
+            },
+            "Temporal": {
+                "title": "Root Type for Validity",
+                "description": "The root of the Validity type's schema.",
+                "required": [
+                    "element",
+                    "uuid",
+                    "start"
+                ],
+                "type": "object",
+                "properties": {
+                    "start": {
+                        "format": "date-time",
+                        "description": "start of life",
+                        "type": "string"
+                    },
+                    "end": {
+                        "format": "date-time",
+                        "description": "End of life",
+                        "type": "string"
+                    },
+                    "obsolete": {
+                        "format": "date-time",
+                        "description": "start of obsolecence.",
+                        "type": "string"
+                    },
+                    "version": {
+                        "description": "Version of element.",
+                        "type": "string"
+                    },
+                    "previous": {
+                        "$ref": "#/components/schemas/Element",
+                        "description": "Previsous temporal"
+                    },
+                    "element": {
+                        "$ref": "#/components/schemas/Element",
+                        "description": "Element of this temporal description."
+                    },
+                    "uuid": {
+                        "description": "Unique id",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "start": "2018-02-10T09:30Z",
+                    "end": "2018-02-10T09:30Z",
+                    "obsolete": "2018-02-10T09:30Z",
+                    "version": "1.0.1",
+                    "previous": {
+                        "id": "123",
+                        "class": "Server",
+                        "link": "/server/123?version=1.0.0"
+                    },
+                    "element": {
+                        "id": "124",
+                        "class": "Server",
+                        "link": "/server/123"
+                    },
+                    "uuid": "abc-123-def-456"
+                }
+            },
+            "Zone": {
+                "description": "description of",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Base"
+                    },
+                    {
+                        "type": "object"
+                    }
+                ],
+                "properties": {
+                    "networks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Element"
+                        }
+                    }
+                },
+                "example": {
+                    "networks": [
+                        {
+                            "id": "some text",
+                            "class": "some text",
+                            "link": "some text"
+                        },
+                        {
+                            "id": "some text",
+                            "class": "some text",
+                            "link": "some text"
+                        }
+                    ]
+                }
+            },
+            "Tag": {
+                "description": "Tag to filter and specify elements.",
+                "required": [
+                    "value",
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "name of tag",
+                        "type": "string"
+                    },
+                    "value": {
+                        "description": "value of tag",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "name": "project",
+                    "value": "ABC"
+                }
+            },
+            "Error": {
+                "title": "Root Type for Error",
+                "description": "Generic error.",
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "description": "Code of this error: AAAA-0000",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Textual description.",
+                        "type": "string"
+                    },
+                    "details": {
+                        "description": "Complete stacktrace or long text to technical details.",
+                        "type": "string"
+                    },
+                    "origin": {
+                        "description": "EL path of this error.",
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "code": "INFRA-123",
+                    "description": "attribute ABC is not acceptable.",
+                    "details": "bla bla \n bla bla \n bla bla \n",
+                    "origin": "server.1.tag.2.name"
+                }
+            }
+        },
+        "responses": {
+            "Error": {
+                "content": {
+                    "application/json": {
+
+                    }
+                },
+                "description": "Error during request management."
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Technical",
+            "description": "Technicals resources."
+        },
+        {
+            "name": "Common",
+            "description": "Common resources."
+        }
+    ]
+}
