@@ -9,20 +9,20 @@ steps:
 
   # Create image Docker
   - name: "gcr.io/cloud-builders/docker"
-#    args: ["build", "-t", "eu.gcr.io/$PROJECT_ID/api-properties-quarkus", "--file", "Dockerfile.native", "."]
+#    args: ["build", "-t", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus", "--file", "Dockerfile.native", "."]
     args: ["build", 
             "-f", "src/main/docker/Dockerfile.jvm", 
-            "-t", "enterprise-flows-repository/api-properties-quarkus:jvm", 
+            "-t", "enterprise-flows-repository/api-infrastructure-quarkus:jvm", 
             "."]
     dir: src/main/docker
 
   # Tag image for Repository
   - name: "gcr.io/cloud-builders/docker"
-    args: ["tag", "enterprise-flows-repository/api-properties-quarkus:native", "eu.gcr.io/$PROJECT_ID/api-properties-quarkus:jvm"]
+    args: ["tag", "enterprise-flows-repository/api-infrastructure-quarkus:native", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm"]
 
   # Push into Docker Repository
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "eu.gcr.io/$PROJECT_ID/api-properties-quarkus:jvm"]
+    args: ["push", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm"]
 
   # Deploy K8S configuration
   - name: "gcr.io/cloud-builders/kubectl"
@@ -36,5 +36,5 @@ steps:
       - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
 
 timeout: 660s
-tags: ['api-properties-quarkus']
-images: ["eu.gcr.io/$PROJECT_ID/api-properties-quarkus"]
+tags: ['api-infrastructure-quarkus']
+images: ["eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus"]
