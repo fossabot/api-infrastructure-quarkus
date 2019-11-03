@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     "servers"
 })
-public class Network {
+public class Network extends Base  {
 
     /**
      * 

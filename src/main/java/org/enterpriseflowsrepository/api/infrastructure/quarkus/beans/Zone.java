@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     "networks"
 })
-public class Zone {
+public class Zone extends Base  {
 
     @JsonProperty("networks")
     private List<Element> networks = new ArrayList<Element>();

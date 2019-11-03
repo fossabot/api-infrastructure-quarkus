@@ -6,12 +6,12 @@
   <artifactId>api-infrastructure-quarkus</artifactId>
   <version>1.0.0</version>
   <properties>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <surefire-plugin.version>2.22.0</surefire-plugin.version>
-    <quarkus.version>0.23.2</quarkus.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <quarkus.version>0.27.0</quarkus.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -46,6 +46,18 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-jackson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-swagger-ui</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-health</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-fault-tolerance</artifactId>
     </dependency>
   </dependencies>
   <build>

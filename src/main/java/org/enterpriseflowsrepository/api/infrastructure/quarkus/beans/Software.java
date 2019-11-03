@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "deliverables",
     "dependencies"
 })
-public class Software {
+public class Software extends Base  {
 
     /**
      * Is it a technological foundation ?

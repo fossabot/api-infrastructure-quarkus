@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "URL",
     "port"
 })
-public class EndPoint {
+public class EndPoint extends Base  {
 
     /**
      * IP of this endpoint.

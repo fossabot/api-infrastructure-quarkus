@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "endpoints",
     "serversVirtualized"
 })
-public class Server {
+public class Server extends Base  {
 
     /**
      * Root Type for Element

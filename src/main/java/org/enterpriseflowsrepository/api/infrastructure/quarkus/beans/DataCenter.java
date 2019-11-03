@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "capacity",
     "zones"
 })
-public class DataCenter {
+public class DataCenter extends Base {
 
     @JsonProperty("localisation")
     private String localisation;
