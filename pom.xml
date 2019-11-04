@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" 
+  xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -52,18 +53,30 @@
       <artifactId>quarkus-smallrye-fault-tolerance</artifactId>
     </dependency>
   </dependencies>
- 
+
   <build>
     <plugins />
   </build>
 
-  <profiles />
-
-    <distributionManagement>
-        <repository>
-          <id>github</id>
-          <name>GitHub EnterpriseFlowsRepository Apache Maven Packages</name>
-          <url>https://maven.pkg.github.com/EnterpriseFlowsRepository/api-infrastructure-quarkus/</url>
-        </repository>
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub EnterpriseFlowsRepository Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/EnterpriseFlowsRepository/api-infrastructure-quarkus/</url>
+    </repository>
   </distributionManagement>
+
+  <profile>
+    <id>github</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <repositories>
+      <repository>
+        <id>github</id>
+        <name>GitHub EnterpriseFlowsRepository Apache Maven Packages</name>
+        <url>https://maven.pkg.github.com/EnterpriseFlowsRepository</url>
+      </repository>
+    </repositories>
+  </profile>
 </project>
