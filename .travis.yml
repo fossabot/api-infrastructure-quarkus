@@ -1,0 +1,24 @@
+language: java
+jdk:
+  - openjdk11
+
+services:
+  - docker
+
+cache:
+  directories:
+  - $HOME/.m2
+
+before_script:
+  - cp .travis.settings.xml $HOME/.m2/settings.xml
+
+script:
+  - mvn install
+  - mvn deploy -Dtoken=$GITHUB_TOKEN 
+
+after_success:
+  - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+  - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+
+notifications:
+  slack: enterpriseflo-sdf9244:I2PkD1iUs0lMR3Zon4ciy5zS
