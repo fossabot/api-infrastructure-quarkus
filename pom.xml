@@ -58,20 +58,4 @@
     <plugins />
   </build>
 
-  <distributionManagement>
-    <repository>
-      <id>github</id>
-      <name>GitHub EnterpriseFlowsRepository Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/EnterpriseFlowsRepository/api-infrastructure-quarkus/</url>
-    </repository>
-  </distributionManagement>
-
-    <repositories>
-      <repository>
-        <id>github</id>
-        <name>GitHub EnterpriseFlowsRepository Apache Maven Packages</name>
-        <url>https://maven.pkg.github.com/EnterpriseFlowsRepository</url>
-      </repository>
-    </repositories>
-
 </project>
