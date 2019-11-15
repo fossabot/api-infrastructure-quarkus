@@ -17,6 +17,17 @@
   <properties>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>oss-sonatype-release</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+    </repository>
+    <repository>
+      <id>oss-sonatype-snapshot</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>
