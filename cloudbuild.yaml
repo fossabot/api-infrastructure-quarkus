@@ -7,8 +7,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
 #    args: ["build", "-t", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus", "--file", "Dockerfile.native", "."]
     args: ["build", 
-            "-f", "src/main/docker/Dockerfile.jvm", 
-            "--cache-from", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm", 
+            "-f", "Dockerfile.jvm", 
             "-t", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm",
             "."]
     dir: src/main/docker
@@ -25,7 +24,7 @@ steps:
       - src/main/k8s/
       - --record
     env:
-      - "CLOUDSDK_COMPUTE_REGION=$_REGION"
+      - "CLOUDSDK_COMPUTE_REGION=$_ZONE"
       - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
 
 timeout: 660s
