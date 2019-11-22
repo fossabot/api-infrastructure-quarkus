@@ -19,10 +19,8 @@ spec:
       containers:
       - name: api-infrastructure-quarkus
         image: enterprise-flows-repository/api-infrastructure-quarkus:jvm
-#        image: enterprise-flows-repository/api-infrastructure-quarkus:native
-#        image: enterprise-flows-repository/api-infrastructure-quarkus:multisateg
         ports:
-        - containerPort: 8081
+        - containerPort: 8091
         # resources:
         #   requests:
         #     cpu: 200m
@@ -33,7 +31,7 @@ spec:
         livenessProbe:
           httpGet:
             path: /health/live
-            port: 8081
+            port: 8091
           initialDelaySeconds: 20
           timeoutSeconds: 10
           periodSeconds: 30

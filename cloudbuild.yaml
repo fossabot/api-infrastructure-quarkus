@@ -12,8 +12,7 @@ steps:
 #    args: ["build", "-t", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus", "--file", "Dockerfile.native", "."]
     args: ["build", 
             "-f", "src/main/docker/Dockerfile.jvm", 
-            "--cache-from", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm",
-            "-t", "enterprise-flows-repository/api-infrastructure-quarkus:jvm", 
+            "--cache-from", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm", 
             "-t", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm",
             "."]
     dir: src/main/docker
@@ -35,4 +34,4 @@ steps:
 
 timeout: 660s
 tags: ['api-infrastructure-quarkus']
-images: ["eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus"]
+images: ["eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm"]
