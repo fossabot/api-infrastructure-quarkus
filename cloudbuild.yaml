@@ -1,8 +1,4 @@
 steps:
-  # Clone Git local
-  - name: gcr.io/cloud-builders/git
-    args: ["fetch", "--unshallow"]
-
   # Maven compile
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['install']
