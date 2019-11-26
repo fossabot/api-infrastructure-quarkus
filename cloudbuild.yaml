@@ -7,10 +7,10 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
 #    args: ["build", "-t", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus", "--file", "Dockerfile.native", "."]
     args: ["build", 
-            "-f", "Dockerfile.jvm", 
+            "-f", "src/main/docker/Dockerfile.jvm", 
             "-t", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:jvm",
+            "-t", "eu.gcr.io/$PROJECT_ID/api-infrastructure-quarkus:$TAG_NAME",
             "."]
-    dir: src/main/docker
 
   # Push into Docker Repository
   - name: "gcr.io/cloud-builders/docker"
