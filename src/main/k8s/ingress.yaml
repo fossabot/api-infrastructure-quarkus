@@ -10,7 +10,7 @@ spec:
   rules:
   - http: 
       paths:
-      - path: /infrastructure/1/*
+      - path: /traces/1/*
         backend:
           serviceName: api-infrastructure-quarkus
-          servicePort: 8081
+          servicePort: 8080
