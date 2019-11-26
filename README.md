@@ -1,4 +1,4 @@
-# API Transcodifications
+# API Infrastructure
 
 [![Build Status](https://travis-ci.org/EnterpriseFlowsRepository/api-infrastructure-quarkus.svg?branch=dev)](https://travis-ci.org/EnterpriseFlowsRepository/api-infrastructure-quarkus)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EnterpriseFlowsRepository_api-infrastructure-quarkus&metric=alert_status)](https://sonarcloud.io/api-infrastructure-quarkus?id=EnterpriseFlowsRepository_api-infrastructure-quarkus)
@@ -7,7 +7,7 @@
 ![Licence](https://img.shields.io/github/license/EnterpriseFlowsRepository/api-infrastructure-quarkus)
 ![Last commit](https://img.shields.io/github/last-commit/EnterpriseFlowsRepository/api-infrastructure-quarkus)
 
-Service implementation for the EFR Transcodifications module.
+Service implementation for the EFR Infrastructure module.
 
 ## Getting started
 
