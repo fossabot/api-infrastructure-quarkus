@@ -1,14 +1,15 @@
 steps:
 
-  # Infra: Update the Google Cloud Run service
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: [
-      'beta', 'run',
-      'deploy', 'api-infrastructure-quarkus',
-      '--image', 'enterpriseflowsrepository/api-infrastructure-quarkus:latest', 
-      '--region', '$_REGION',
-      '--platform', 'managed',
-      '--allow-unauthenticated']
+  # Deploy K8S configuration
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - apply
+      - -f
+      - src/main/k8s/
+      - --record
+    env:
+      - "CLOUDSDK_COMPUTE_ZONE=$_ZONE"
+      - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
 
 timeout: 660s
 tags: ['api-infrastructure-quarkus']
