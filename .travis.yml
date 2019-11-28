@@ -55,6 +55,8 @@ script:
 - ./mvnw clean verify
 # Build the container (binaries are built into a multistage container)
 - docker build --file src/main/docker/Dockerfile -t "$CONTAINER_NAME" .
+# Test the container by attacking the app
+- ./container-test-zap.sh
 
 after_success:
 # Run SonarQube
