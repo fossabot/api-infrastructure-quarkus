@@ -46,7 +46,7 @@ Unit tests are integrated within the project. [We are use JUnit 5](https://junit
 ./mvnw clean verify
 ```
 
-In CI/CD, several tools are used to automatically and proactively test binaries:
+Several tools integrated to the continuous deployment are used to automatically & proactively ensure the quality of our binaries (functional, security, code quality):
 
 1. Application of **unit tests** on the application
 2. Binaries generation [as a **native GraalVM** (C language) executable](https://www.graalvm.org/docs/reference-manual/native-image/)
@@ -61,7 +61,7 @@ This allow our app to start in less than 500 milliseconds.
 
 ### Development environement
 
-Start the container to your own environement (work well with 50 MiB RAM and 0.05 CPU):
+Start the container to your own environement (work well with 50 MiB RAM & 0.05 CPU):
 
 ```bash
 docker run -t --memory="50m" --cpus=".05" -p 8080:8080 enterpriseflowsrepository/api-infrastructure-quarkus
@@ -73,7 +73,7 @@ We advise the usage of Kubernetes as the orchestrator of the application. Thanks
 
 ## Built With
 
-- [Quarkus](https://quarkus.io) - Kubernetes Native Java EE stack tailored for OpenJDK HotSpot and GraalVM
+- [Quarkus](https://quarkus.io) - Kubernetes Native Java EE stack tailored for OpenJDK HotSpot & GraalVM
 - [RESTEasy](https://resteasy.github.io) - Helper librairies to built RESTful applications
 - [JUnit 5](https://junit.org/junit5) - Unitary tests platform for Java
 - [REST-assured](http://rest-assured.io) - REST library validator
@@ -87,7 +87,7 @@ We advise the usage of Kubernetes as the orchestrator of the application. Thanks
 
 ## Contributing
 
-Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details on our code of conduct, & the process for submitting pull requests to us.
 
 ## Versioning
 
