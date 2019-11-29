@@ -56,7 +56,7 @@ script:
 # Build the container (binaries are built into a multistage container)
 - docker build --file src/main/docker/Dockerfile -t "$CONTAINER_NAME" .
 # Test the container by attacking the app
-- ./src/main/docker/container-test-zap.sh
+- ./src/main/docker/security-owasp-zap.sh
 
 after_success:
 # Run SonarQube
