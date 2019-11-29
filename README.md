@@ -28,11 +28,7 @@ To start working on the project:
 In order to start with the project, first install a JDK then install the project dependencies:
 
 ```bash
-./mvnw install
-```
-
-```bash
-➜  api-infrastructure-quarkus git:(quality-travis) ✗ ./mvnw install
+➜  api-infrastructure-quarkus git:(dev) ✗ ./mvnw install
 [...]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
@@ -50,16 +46,25 @@ Unit tests are integrated within the project. [We are use JUnit 5](https://junit
 ./mvnw clean verify
 ```
 
+In CI/CD, several tools are used to automatically and proactively test binaries:
+
+1. Application of **unit tests** on the application
+2. Binaries generation [as a **native GraalVM** (C language) executable](https://www.graalvm.org/docs/reference-manual/native-image/)
+3. **Container** generation
+4. Testing the containerized application [following OWASP ZAP **security tests**](https://github.com/zaproxy/zaproxy)
+
 ## Deployment
 
-Enterprise Flows Repisitory is straightforward: [a container image is published to Docker Hub](https://hub.docker.com/r/enterpriseflowsrepository/api-infrastructure-quarkus).
+Enterprise Flows Repisitory is straightforward: [each build is published to Docker Hub](https://hub.docker.com/r/enterpriseflowsrepository/api-infrastructure-quarkus).
+
+This allow our app to start in less than 500 milliseconds.
 
 ### Development environement
 
-Start the container to your own environement (50m RAM and 0.05 CPU):
+Start the container to your own environement (work well with 50 MiB RAM and 0.05 CPU):
 
 ```bash
-docker run --memory="50m" --cpus=".05" -p 8080:8080 enterpriseflowsrepository/api-infrastructure-quarkus
+docker run -t --memory="50m" --cpus=".05" -p 8080:8080 enterpriseflowsrepository/api-infrastructure-quarkus
 ```
 
 ### Production environement
@@ -77,6 +82,8 @@ We advise the usage of Kubernetes as the orchestrator of the application. Thanks
 - [SmallRye Fault Tolerance](https://github.com/smallrye/smallrye-fault-tolerance) - Caching & retry requests automations library for Java EE
 - [Swagger UI](https://swagger.io/tools/swagger-ui) - OpenAPI v3 UI
 - [README-template.md](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) - An awesome README template from @PurpleBooth
+- [OWASP Zed Attack Proxy](https://github.com/zaproxy/zaproxy) - Security tools to find security vulnerabilities in web applications
+- [Alpine Linux distribution](https://alpinelinux.org/)
 
 ## Contributing
 
@@ -89,6 +96,9 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 - **Emmanuel Lesné** - *Project creator & maintainer* - [Emmanuel35](https://github.com/Emmanuel35)
+- **Adrien Simon** - *Maintainer* - [AdrienSimon](https://github.com/AdrienSimon)
+- **Inès Rekik** - *Maintainer* - [inesrk](https://github.com/inesrk)
+- **Yanis Meghraoua** - *Maintainer* - [MeghraouaY](https://github.com/MeghraouaY)
 - **Clément Lesné** - *Maintainer* - [clementlesne](https://github.com/clementlesne)
 
 ## License
