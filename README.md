@@ -83,7 +83,7 @@ We advise the usage of Kubernetes as the orchestrator of the application. Thanks
 - [Swagger UI](https://swagger.io/tools/swagger-ui) - OpenAPI v3 UI
 - [README-template.md](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) - An awesome README template from @PurpleBooth
 - [OWASP Zed Attack Proxy](https://github.com/zaproxy/zaproxy) - Security tools to find security vulnerabilities in web applications
-- [Alpine Linux distribution](https://alpinelinux.org/)
+- [Alpine Linux distribution](https://alpinelinux.org/) - A security-oriented, lightweight Linux distribution based on musl libc and busybox
 
 ## Contributing
 
