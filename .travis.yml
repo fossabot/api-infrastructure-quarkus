@@ -59,14 +59,18 @@ script:
 - ./mvnw clean verify
 # Build the container (binaries are built into a multistage container)
 - docker build --file src/main/docker/Dockerfile -t "$CONTAINER_NAME" .
-# Test the container by attacking the app
-- ./src/main/docker/security-owasp-zap.sh
+# Run Fossa analysis
+# See: https://docs.fossa.com/docs/travisci
+- fossa analyze
 
 after_success:
+# Test the container by attacking the app
+- ./src/main/docker/security-owasp-zap.sh
 # Run SonarQube
 - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=EnterpriseFlowsRepository_api-infrastructure-quarkus
-# Run Fossa
-- fossa analyze
+# Make this build fail if the licence analysis returned a negative result
+# See: https://docs.fossa.com/docs/travisci
+- fossa test
 
 notifications:
   # Notify each build on Slack
