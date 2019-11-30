@@ -50,7 +50,7 @@ before_install:
 # Define maven custom repo (requirement for 'api-module-quarkus')
 - cp .travis.settings.xml $HOME/.m2/settings.xml
 # Install Fossa
-- curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
+- "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash"
 
 script:
 # Install the maven dependencies
