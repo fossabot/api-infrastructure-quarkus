@@ -6,6 +6,7 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=EnterpriseFlowsRepository_api-infrastructure-quarkus&metric=security_rating)](https://sonarcloud.io/api-infrastructure-quarkus?id=EnterpriseFlowsRepository_api-infrastructure-quarkus)
 ![Licence](https://img.shields.io/github/license/EnterpriseFlowsRepository/api-infrastructure-quarkus)
 ![Last commit](https://img.shields.io/github/last-commit/EnterpriseFlowsRepository/api-infrastructure-quarkus)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FEnterpriseFlowsRepository%2Fapi-infrastructure-quarkus.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FEnterpriseFlowsRepository%2Fapi-infrastructure-quarkus?ref=badge_shield)
 
 Service implementation for the EFR Infrastructure module.
 
@@ -104,3 +105,6 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE.md](LICENSE.md) file for details.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FEnterpriseFlowsRepository%2Fapi-infrastructure-quarkus.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FEnterpriseFlowsRepository%2Fapi-infrastructure-quarkus?ref=badge_large)
