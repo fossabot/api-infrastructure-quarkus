@@ -22,6 +22,8 @@ env:
   - secure: c0k4zl4bbtBKRVYaflHf5ElLNGB1YyrUf/zpIAchi28JXcD7UvcXKlsNarBRxDdyZ+SPN83kxB3WT1SVOD2VrCIkcfBAP2frB6/Slrk/10Y5CalfXTKTdxQItpSaGBiPrpDitJ+zJ6kE4R5xqQdCAnSjzXDmwN8olx2GBp0JcIb+wB6mie9RvzY9YyQ7eudts8NKe2q5O1GVORrmf4zDX0a3RbCO/zsS6zxJBrTBKn8izhJ9BG+1b1xoxX2xx5xOgyDHkFofESrXYWnP8VG7bIVT2e8wRng4sRUepn3FxL8/DGYUsZdgU15ndey/IaIot3BP93DJ2V4B8zdFMvjqjxMxaBDiEjVFyZEYrIFFCRY+SHSfZR2gypHFlL4PJWWkj82oz0YTd/nCFkdIyvStA8wlrOt/6jHtgR4m6ckA4LboFvPPasM84f+26IeDRhmMl+ViST6orCzq9sEku3lSRBcghpnXMtS9qJ7cP3W1bGQ9uPkh0aUspYDpfSbKAKzVrUzA/FXHhDZdlraC0365JbngMeardO5D0Dinax3WMRQhWjwaI5iZ3FuGoEmGTXkMfdd9HJTnVxco0gXYjK20dVJ3ofn8GKV3/8exCuMK0UQeIHBMi/jV7rk1IrTlEAqxyNfGN30njT1LnGtAIeS8SFAfvRyqEicYQyvLowrTn/A=
   # CONTAINER_REPO_HUB_DOCKER_COM_PASSWORD
   - secure: RErEEP4n7FDL9g6XqFi0m/kmTvR2KT6s0QaR5bem12SASwoF3Jo6rlwaAtkdJLM3hZXp5MRPjY00bIQIyRbzoqOxjokNZgfnNC8vFCdBbGbkroxnT4epuMRu163HhyjEo7HdBuyz+RYboyqNEl19kgmWNccNpitEoZtfudXYEPQOjc4zjoBkFSSCQ+6/4kYJMuFVA+aVXU6vxqoE/Jmglg0hPAKSjATgq0yZhaMKbSIlIi0hq9uefQIt3yHhLkVbxgbBPJsUO5WziR3K5xXm3sXvsv/erv9FiklnoIrlEHdJWe88d80XPXUpkwY4GL+sBUL/cxDP55juOGAW2J0plIpkdtb8dflVGIeHI6/tk6fxROwARA8oQT6jQ9OBGGyS3SEyb8oOj4v8W1exRfGJ6KzuCzEPa+uCfUqaoxPrJh3//T00QyOCP8HGEaA+1/tbqVXXecTqQnmpXU8lzj1kg0BgkcU/0pZyoWbETjojpSjLcrpcCeAY0+fWURtzlUpdvQMjfpQPR4r6hmwtSA+G9cE9/4HUs2pi5ESxIIvAk2pzY86oQedp7LP5WcHyFO8znSo0mvzDq+tXTWaeHMAphAbwbPizaZVijYt0/JNqPPdHcBWMF7gTwSh/0cBUpaiQPYT5LlbWB3JHM2n01o46Q1zprandsyWX049ks0A7JJ4=
+  # FOSSA_API_KEY
+  - secure: "cqEMHWcaaEBXwbNaUVosmsHCXKAil38fRg5Jlxem9Q63LjIrrJJxy3OThqKuwL8/Im9mwAHethVRXkXHbvApPY4RNoF/fIfr/NICyW3gUs1NvBuf4UCqpNivJMicBX8JfKD3I8a5GWBzp8vuHwt5gH03S7FBdO7nPrBmMXzxazr0e8VZvuJHoAUhzWUCTUnfDewi+7kUn4b/W5lFpQhXG0gPW33mBUVa5dJmwK3I8Z2/1LAXteYDDUieE895RGewPdFliRVCPQ6ATM6qV9m7oZCKqwmqtao3Kk2r0EpCF1JmUBsXF75JX5NChOpXYKhF01XaEZDfcZYGRDr/o6O4cg9UO/SarP+N0+DsUxRrNDATVu6QjMV31y1wQIb/gt4q36GvVLE+SfQv84YgBMjTQLkp5udeoSvs6edpx7Jhb6CacuQomP6BmmoD+DfdObIZMK9am/MxnEGiP1j5+ySWnCjLaXXM+WrPVowfhuFwk0LBltLJ1a2h8U2wyU4PcjnctFAxc8ThofPp0GfRDveeBLsXHJ/je8F3hJ4DbDHByHURfu1rGXijAYVy52mUPe7v6i7I+iAaLykZlpYtk2wn2UXB1wkoMxlkWVEKEfViD7OPOmX5S8FO8kHv9jTR+IEFp4ai14em0hrs6/tsYE2ZhGuobnL1d7KJMDpw0vzUmbA="
 
 services:
 # We will create containers here!
@@ -47,6 +49,8 @@ before_install:
 - echo "MAVEN_OPTS='-Xmx2048M -Xss128M -XX:+CMSClassUnloadingEnabled -XX:+UseG1GC -XX:-UseGCOverheadLimit'" > $HOME/.mavenrc
 # Define maven custom repo (requirement for 'api-module-quarkus')
 - cp .travis.settings.xml $HOME/.m2/settings.xml
+# Install Fossa
+- curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
 
 script:
 # Install the maven dependencies
@@ -61,6 +65,8 @@ script:
 after_success:
 # Run SonarQube
 - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=EnterpriseFlowsRepository_api-infrastructure-quarkus
+# Run Fossa
+- fossa analyze
 
 notifications:
   # Notify each build on Slack
