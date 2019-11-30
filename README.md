@@ -6,6 +6,7 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=EnterpriseFlowsRepository_api-infrastructure-quarkus&metric=security_rating)](https://sonarcloud.io/api-infrastructure-quarkus?id=EnterpriseFlowsRepository_api-infrastructure-quarkus)
 ![Licence](https://img.shields.io/github/license/EnterpriseFlowsRepository/api-infrastructure-quarkus)
 ![Last commit](https://img.shields.io/github/last-commit/EnterpriseFlowsRepository/api-infrastructure-quarkus)
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B14702%2Fgit%40github.com%3AEnterpriseFlowsRepository%2Fapi-infrastructure-quarkus.git.svg?type=shield)](https://app.fossa.com/projects/custom%2B14702%2Fgit%40github.com%3AEnterpriseFlowsRepository%2Fapi-infrastructure-quarkus.git?ref=badge_shield)
 
 Service implementation for the EFR Infrastructure module.
 
