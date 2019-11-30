@@ -55,8 +55,6 @@ before_install:
 script:
 # Install the maven dependencies
 - ./mvnw clean install
-# Test the pre-build
-- ./mvnw clean verify
 # Build the container (binaries are built into a multistage container)
 - docker build --file src/main/docker/Dockerfile -t "$CONTAINER_NAME" .
 # Run Fossa analysis
@@ -64,6 +62,8 @@ script:
 - fossa analyze
 
 after_success:
+# Test the pre-build
+- ./mvnw clean verify
 # Run SonarQube
 - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=EnterpriseFlowsRepository_api-infrastructure-quarkus
 # Test the container by attacking the app
